@@ -156,6 +156,7 @@ const AssetTypeGroupView = () => {
                             <TableCell
                                 className='min-w-[40px] w-[40px] max-w-[40px]'
                                 variant='heading'
+                                columnIndex={0}
                             >
                                 <CheckBox
                                     isCheckBoxChecked={assetTypeRowsData.fields.length ? assetTypeRowsData.fields.length === selectedRowIds.length : false}
@@ -173,10 +174,11 @@ const AssetTypeGroupView = () => {
                             {
                                 assetTypeGroupQuery.data?.data.data.columns.map((column, colIndex) => (
                                     <TableCell
-                                        key={colIndex}
+                                        key={colIndex + 1}
                                         variant='heading'
                                         align={column.heading !== 'Icon' ? 'left' : 'center'}
                                         className={cn(column.heading === 'Icon' && 'min-w-[40px] w-[40px] max-w-[40px]')}
+                                        columnIndex={colIndex + 1}
                                     >
                                         {column.heading}
                                     </TableCell>
@@ -190,6 +192,7 @@ const AssetTypeGroupView = () => {
                                 <TableRow key={item._id} isRowSelected={selectedRowIds.includes(item.id)} className='group relative'>
                                     <TableCell
                                         className='min-w-[40px] w-[40px] max-w-[40px]'
+                                        columnIndex={0}
 
                                     >
                                         <TableActionWrapper rowIndex={rowIndex} remove={assetTypeRowsData.remove} >
@@ -232,6 +235,7 @@ const AssetTypeGroupView = () => {
                                     </TableCell>
                                     <TableCell
                                         className='min-w-[40px] w-[40px] max-w-[40px] p-0'
+                                        columnIndex={1}
                                     >
                                         <div
                                             className="cursor-pointer w-full h-full items-center flex justify-center"
@@ -249,7 +253,7 @@ const AssetTypeGroupView = () => {
 
 
                                     </TableCell>
-                                    <TableCell childrenClassName='p-0'>
+                                    <TableCell childrenClassName='p-0' columnIndex={2}>
                                         <Controller
                                             control={form.control}
                                             name={`rows.${rowIndex}.asset_type.selected_item`}
@@ -269,7 +273,7 @@ const AssetTypeGroupView = () => {
                                             )}
                                         />
                                     </TableCell>
-                                    <TableCell childrenClassName='p-0'>
+                                    <TableCell childrenClassName='p-0' columnIndex={3}>
                                         <Controller
                                             control={form.control}
                                             name={`rows.${rowIndex}.applicable_platforms.selected_items`}
@@ -286,7 +290,7 @@ const AssetTypeGroupView = () => {
                                         />
 
                                     </TableCell>
-                                    <TableCell childrenClassName='p-0'>
+                                    <TableCell childrenClassName='p-0' columnIndex={4}>
                                         <Controller
                                             control={form.control}
                                             name={`rows.${rowIndex}.system_board_for_brokerage.selected_items`}
@@ -302,7 +306,7 @@ const AssetTypeGroupView = () => {
                                             )}
                                         />
                                     </TableCell>
-                                    <TableCell childrenClassName='p-0'>
+                                    <TableCell childrenClassName='p-0' columnIndex={5}>
                                         <Controller
                                             control={form.control}
                                             name={`rows.${rowIndex}.system_board_for_records.selected_items`}
